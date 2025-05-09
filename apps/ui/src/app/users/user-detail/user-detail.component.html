@@ -1,0 +1,106 @@
+<div *ngIf="user" class="user-detail-container">
+  <div class="header-row">
+    <button (click)="goBack()" class="back-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-arrow-left"
+      >
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <h2 class="h2">User Details</h2>
+  </div>
+
+  <form (ngSubmit)="updateUser()" class="user-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        id="name"
+        [(ngModel)]="user.name"
+        name="name"
+        required
+        class="form-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        [(ngModel)]="user.email"
+        name="email"
+        required
+        class="form-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input
+        id="position"
+        [(ngModel)]="user.position"
+        name="position"
+        required
+        class="form-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        id="address"
+        [(ngModel)]="user.address"
+        name="address"
+        required
+        class="form-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="company">Company:</label>
+      <select
+        id="company"
+        [(ngModel)]="selectedCompanyId"
+        name="company"
+        class="form-input"
+      >
+        <option [ngValue]="null">No Company</option>
+        <option *ngFor="let company of companies" [ngValue]="company.id">
+          {{ company.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="coworkers-section">
+      <h3>Coworkers</h3>
+      <ul
+        *ngIf="user.relatedCoworkers?.length; else noCoworkers"
+        class="coworkers-list"
+      >
+        <li
+          *ngFor="let coworker of user.relatedCoworkers"
+          class="coworker-item"
+        >
+          <span class="coworker-name">{{ coworker.name }}</span>
+        </li>
+      </ul>
+      <ng-template #noCoworkers>
+        <p>No related coworkers found.</p>
+      </ng-template>
+    </div>
+
+    <button type="submit" class="update-button">Update User</button>
+  </form>
+</div>
+<div *ngIf="!user" class="loading-message">
+  <p>Loading user details...</p>
+</div>

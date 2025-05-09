@@ -1,0 +1,29 @@
+<div class="user-list-container">
+  <div class="add-company-form">
+    <input
+      type="text"
+      [(ngModel)]="newCompanyName"
+      placeholder="Enter company name"
+    />
+    <button (click)="createCompany()">Add Company</button>
+  </div>
+
+  <div class="company-list">
+    <h3>Companies</h3>
+    <ul>
+      <li *ngFor="let company of companies">{{ company.name }}</li>
+    </ul>
+  </div>
+
+  <div class="user-list">
+    <h3>Users</h3>
+    <div class="add-user-form">
+      <button (click)="addUser()">Add User</button>
+    </div>
+    <ul>
+      <li *ngFor="let user of users">
+        <a [routerLink]="['/users', user.id]">{{ user.name }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

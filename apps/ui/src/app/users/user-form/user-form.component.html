@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Add User</h2>
+<mat-dialog-content>
+  <form [formGroup]="userForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Position"
+        formControlName="position"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Address"
+        formControlName="address"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Company" formControlName="companyId">
+        <mat-option *ngFor="let company of companies" [value]="company.id">
+          {{ company.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSubmit()" [disabled]="userForm.invalid">
+    Save
+  </button>
+</mat-dialog-actions>
