@@ -11,36 +11,28 @@ A modern full-stack web application leveraging Angular 17 for the frontend and N
 - **Code Quality**: ESLint, Prettier  
 - **Tooling**: Nx Monorepo
 
-## 📁 Project Structure
+## 📁 Project Structure and Getting Started
 
-The project follows a monorepo architecture using Nx, organizing the frontend and backend applications under the `apps/` directory:
+```bash
+# Folder structure:
+apps/
+├── backend/   # NestJS application
+└── ui/        # Angular application
 
-## 🚀 Getting Started
+# Prerequisites:
+# - Node.js (v18 or later)
+# - Docker (for PostgreSQL)
 
-### Prerequisites
+# Clone the repository:
+git clone https://github.com/hn05012/Full-Stack-Project-Angular-NestJS.git
+cd Full-Stack-Project-Angular-NestJS
 
-- Node.js (v18 or later)
-- Docker (for PostgreSQL)
+# Install dependencies:
+npm install
 
-### Installation
+# Start backend and frontend:
+npm run start:backend
+npm run start:ui
 
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/hn05012/Full-Stack-Project-Angular-NestJS.git
-   cd Full-Stack-Project-Angular-NestJS
-
-2. **Install Dependencies**:
-
-  ```bash
-   npm install
-3. **Start Backend (Nest JS) and Frontend (Angular JS)**
-
-  ```bash
-   npm run start:backend
-   npm run start:ui
-
-  
-
-
-   
+# Backend will be running at: http://localhost:3333
+# Frontend will be running at: http://localhost:4200
